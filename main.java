@@ -9,8 +9,13 @@ public class main {
 		
 		
 		list.add("");
-		list = c.ones(list, 5);
-		System.out.println(list.get(0));
+		list = c.ones(list, 10);
+		list = c.collapser(list);
+		
+		for(int i=0; i < list.size(); i++) {
+			System.out.println("Item " + i + ":");
+			System.out.println(list.get(i));
+		}
 	}
 
 }
