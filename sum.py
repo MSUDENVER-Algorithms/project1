@@ -1,29 +1,46 @@
-def recursive_sums(sums_to_n, n):
-  #sumsToN is an array length n initialized to 1
-  if len(sums_to_n) == 1:
-    sums_to_n[0] = n
-    print(*sums_to_n)
-
-  else:
-    print(*sums_to_n, sep=" + ")
-    if len(sums_to_n) > 1:
-      sums_to_n.pop()
-      sums_to_n.pop()
-      i = n - len(sums_to_n)
-      if i > 0:
-        sums_to_n.append(i)
-    recursive_sums(sums_to_n, n)
-
-def recursive_twos(two_sums, n):
-  if len(two_sums) == 2:
-    print(*two_sums, sep=" + ")
-
-  else:
-    print(*two_sums, sep=" + ")
-
-n = 7
-my_list = []
-for i in range(n):
-  my_list.append(1)
-
-recursive_sums(my_list, n)
+def sums_to_n(n):
+	#list length n inititalized to zero
+	sum_list = [0] *n
+	
+	#index of last integer in sum
+	i = 0
+	
+	#initialize first element as n (n + 0 = n)
+	sum_list[i] = n
+	
+	#loop stops when sum_list is all ones
+	while True:
+		
+		#print current sum_list TODO: need to stop at first 0
+		print(*sum_list, sep=" + ")
+		
+		#left_over tracks the value left over
+		left_over = 0
+		
+		#loop from the end of the list to the first value > 1
+		while i >= 0 and sum_list[i] == 1:
+			left_over += sum_list[i]
+			i -= 1
+			
+		#if we've looped through the list and each value is 1, we're done
+		if i < 0:
+			return
+		
+		#decrease the current element and increase left_over
+		sum_list[i] -= 1
+		left_over += 1
+			
+		#sort and adjust left_over
+		while left_over > sum_list[i]:
+			sum_list[i + 1] = sum_list[i]
+			left_over = left_over - sum_list[i]
+			i += 1
+			
+		#load left_over into sum_list and increment index
+		sum_list[i + 1] = left_over
+		i += 1
+		
+print_sums_to_n(7)
+		
+	
+	
