@@ -16,6 +16,8 @@ public class main {
 		}
 		
 		nxtLeaf(1, n, out, 0);
+		
+		sc.close();
 	}
 	
 	public static void nxtLeaf(int i, int n, int[] out, int newIndex){
